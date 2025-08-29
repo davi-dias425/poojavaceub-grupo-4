@@ -1,4 +1,4 @@
-```plantuml
+```mermaid
 classDiagram
   class Pessoa {
     - nome: string
@@ -23,3 +23,7 @@ classDiagram
     - salario: float
     + darAula(): void
   }
+
+
+
+
