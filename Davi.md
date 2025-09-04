@@ -1,8 +1,8 @@
 ```mermaid
 classDiagram
-  class Pessoa {
-    - nome: string
-    - idade: int
-    + cumprimentar(): void
-  }
-```
+ class Fornecedor {
+        -id: int
+        -nome: string
+        -cnpj: string
+        -contato: string
+    }
