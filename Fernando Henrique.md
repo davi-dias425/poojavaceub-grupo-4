@@ -1,19 +1,39 @@
 classDiagram
-  class Pessoa {
-    - nome: string
-    - idade: int
-    + cumprimentar(): void
-  }
+    
+    class Usuario {
+        -nome: string
+        -email: string
+        -senha: string
+    }
 
-  class Aluno {
-    - matricula: string
-    + assistirAula(): void
-  }
+    class Cliente {
+        -cpf: int
+        -endereco: string
+    }
 
-  class Professor {
-    - salario: float
-    + darAula(): void
-  }
+    class Funcionario {
+        -matricula: int
+        -cargo: string
+    }
 
-  Pessoa <|-- Aluno
-  Pessoa <|-- Professor
+    
+    class Produto {
+        -nome: string
+        -preco: int
+        -estoque: int
+    }
+
+    class Instrumento {
+        -marca: string
+        -modelo: string
+    }
+
+    class Cordas {
+        -numeroCordas: int
+    }
+
+    
+    Cliente <|-- Usuario
+    Funcionario <|-- Usuario
+    Instrumento <|-- Produto
+    Cordas <|-- Instrumento
