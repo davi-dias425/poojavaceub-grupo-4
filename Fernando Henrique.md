@@ -1,5 +1,4 @@
 classDiagram
-    
     class Usuario {
         -nome: string
         -email: string
@@ -16,7 +15,6 @@ classDiagram
         -cargo: string
     }
 
-    
     class Produto {
         -nome: string
         -preco: int
@@ -32,8 +30,8 @@ classDiagram
         -numeroCordas: int
     }
 
-    
     Cliente <|-- Usuario
     Funcionario <|-- Usuario
     Instrumento <|-- Produto
     Cordas <|-- Instrumento
+
