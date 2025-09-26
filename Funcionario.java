@@ -2,7 +2,6 @@
 
 # Código Funcionário
 
-```java
 1class Funcionario {
     private int id;
     private String nome;
