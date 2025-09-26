@@ -1,8 +1,5 @@
 public enum Categoria {
-    CORDAS,
-    PERCUSSÂO,
-    SOPRO,
-    ELETRONICO
+    CORDAS, PERCUSSAO, SOPRO, ELETRONICO, ACESSORIOS
 }
 
 
