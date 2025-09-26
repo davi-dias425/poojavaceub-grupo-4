@@ -18,7 +18,7 @@ public abstract class Produto {
 
     public void setPreco(double preco) { this.preco = preco; }
 
-    // Método abstrato para ser implementado pelas subclasses
+   
     public abstract void exibirDetalhes();
 }
 
