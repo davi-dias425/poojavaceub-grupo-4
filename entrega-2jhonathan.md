@@ -253,61 +253,77 @@ public class Main {
 # Código Funcionário
 
 ```java
-1  import java.util.ArrayList;
-2  import java.util.List;
-3
-4  public class Funcionario {
-5      private int id;
-6      private String nome;
-7      private List<Produto> produtos;
-8      private List<Venda> vendas;
-9
-10     public Funcionario(int id, String nome) {
-11         this.id = id;
-12         this.nome = nome;
-13         this.produtos = new ArrayList<>();
-14         this.vendas = new ArrayList<>();
-15     }
-16
-17     public int getId() { return id; }
-18     public String getNome() { return nome; }
-19
-20     public void cadastrarProduto(Produto produto) {
-21         produtos.add(produto);
-22     }
-23
-24     public Produto consultarProduto(int codigo) {
-25         for (Produto p : produtos) {
-26             if (p.getCodigo() == codigo) return p;
-27         }
-28         return null;
-29     }
-30
-31     public Venda gerarVenda(int idVenda) {
-32         Venda venda = new Venda(idVenda, new java.util.Date());
-33         vendas.add(venda);
-34         return venda;
-35     }
-36
-37     public Venda consultarVenda(int idVenda) {
-38         for (Venda v : vendas) {
-39             if (v.getId() == idVenda) return v;
-40         }
-41         return null;
-42     }
-43
-44     public void exibirProdutosCadastrados() {
-45         System.out.println("=== Produtos cadastrados ===");
-46         for (Produto p : produtos) {
-47             p.exibirDetalhes();
-48         }
-49     }
-50
-51     public void exibirVendas() {
-52         System.out.println("=== Vendas realizadas ===");
-53         for (Venda v : vendas) {
-54             v.exibirItens();
-55         }
-56     }
-57 }
+1class Funcionario {
+    private int id;
+    private String nome;
+    private List<Produto> produtos;
+    private List<Venda> vendas;
+
+    public Funcionario(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+        this.produtos = new ArrayList<>();
+        this.vendas = new ArrayList<>();
+    }
+
+    public void cadastrarProduto(Produto p) {
+        produtos.add(p);
+    }
+
+    public Produto consultarProduto(int codigo) {
+        for (Produto p : produtos) {
+            if (p.getCodigo() == codigo) return p;
+        }
+        return null;
+    }
+
+    public Venda gerarVenda(int idVenda) {
+        Venda v = new Venda(idVenda, new java.util.Date());
+        vendas.add(v);
+        return v;
+    }
+
+    public Venda consultarVenda(int idVenda) {
+        for (Venda v : vendas) {
+            if (v.getId() == idVenda) return v;
+        }
+        return null;
+    }
+
+    public void listarProdutos() {
+        System.out.println("=== Produtos cadastrados ===");
+        for (Produto p : produtos) {
+            p.exibirDetalhes();
+            System.out.println("Preço: R$ " + p.getPreco() + " | Categoria: " + p.getCategoria());
+        }
+    }
+}
+
+public class LojaMusica {
+    public static void main(String[] args) {
+        Funcionario f1 = new Funcionario(1, "João");
+
+        Produto guitarra = new Instrumento(101, "Guitarra", 1500.0, Categoria.CORDAS, "Cordas", "Fender");
+        Produto baqueta = new Acessorio(201, "Baqueta", 50.0, Categoria.ACESSORIOS, "Madeira");
+
+        f1.cadastrarProduto(guitarra);
+        f1.cadastrarProduto(baqueta);
+
+        Venda venda1 = f1.gerarVenda(1);
+        venda1.adicionarProduto(guitarra, 1);
+        venda1.adicionarProduto(baqueta, 2);
+
+        System.out.println("\n--- Itens da venda ---");
+        venda1.exibirItens();
+
+        System.out.println("\n--- Produtos cadastrados ---");
+        f1.listarProdutos();
+
+        System.out.println("\n--- Consulta de venda ---");
+        Venda vendaConsultada = f1.consultarVenda(1);
+        if (vendaConsultada != null) {
+            vendaConsultada.exibirItens();
+        }
+    }
+}
 
