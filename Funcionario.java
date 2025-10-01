@@ -1,8 +1,9 @@
 
 
-# Código Funcionário
+import java.util.ArrayList;
+import java.util.List;
 
-1class Funcionario {
+public class Funcionario {
     private int id;
     private String nome;
     private List<Produto> produtos;
@@ -15,13 +16,24 @@
         this.vendas = new ArrayList<>();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
     public void cadastrarProduto(Produto p) {
         produtos.add(p);
+        System.out.println("Produto cadastrado: " + p.getNome());
     }
 
     public Produto consultarProduto(int codigo) {
         for (Produto p : produtos) {
-            if (p.getCodigo() == codigo) return p;
+            if (p.getCodigo() == codigo) {
+                return p;
+            }
         }
         return null;
     }
@@ -34,44 +46,24 @@
 
     public Venda consultarVenda(int idVenda) {
         for (Venda v : vendas) {
-            if (v.getId() == idVenda) return v;
+            if (v.getId() == idVenda) {
+                return v;
+            }
         }
         return null;
     }
 
     public void listarProdutos() {
-        System.out.println("=== Produtos cadastrados ===");
+        System.out.println("\n--- Produtos cadastrados ---");
         for (Produto p : produtos) {
             p.exibirDetalhes();
-            System.out.println("Preço: R$ " + p.getPreco() + " | Categoria: " + p.getCategoria());
         }
     }
-}
 
-public class LojaMusica {
-    public static void main(String[] args) {
-        Funcionario f1 = new Funcionario(1, "João");
-
-        Produto guitarra = new Instrumento(101, "Guitarra", 1500.0, Categoria.CORDAS, "Cordas", "Fender");
-        Produto baqueta = new Acessorio(201, "Baqueta", 50.0, Categoria.ACESSORIOS, "Madeira");
-
-        f1.cadastrarProduto(guitarra);
-        f1.cadastrarProduto(baqueta);
-
-        Venda venda1 = f1.gerarVenda(1);
-        venda1.adicionarProduto(guitarra, 1);
-        venda1.adicionarProduto(baqueta, 2);
-
-        System.out.println("\n--- Itens da venda ---");
-        venda1.exibirItens();
-
-        System.out.println("\n--- Produtos cadastrados ---");
-        f1.listarProdutos();
-
-        System.out.println("\n--- Consulta de venda ---");
-        Venda vendaConsultada = f1.consultarVenda(1);
-        if (vendaConsultada != null) {
-            vendaConsultada.exibirItens();
+    public void listarVendas() {
+        System.out.println("\n--- Vendas realizadas ---");
+        for (Venda v : vendas) {
+            System.out.println("Venda ID: " + v.getId() + " | Valor total: R$ " + v.getValorTotal());
         }
     }
 }
