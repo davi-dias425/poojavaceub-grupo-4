@@ -1,15 +1,12 @@
-puclic class ItemVenda {
-  private Produto produto;
-  private int quantidade;
+public class ItemVenda {
+    private Produto produto;
+    private int quantidade;
 
-  public ItemVenda(Produto produto, int quantidade) {
-    this.produto = produto;
-    this.quantidade = quantidade;
-     
-      }
-  public double calcular Subtotal() {
-    precoDoProduto = this.produto.getPreco();
-    double subtotalCalculado = precoDoProduto * this.quantidade;
-        return subtotalCalculado;
+    public ItemVenda(Produto produto, int quantidade) {
+        this.produto = produto;
+        this.quantidade = quantidade;
+    }
+    public double calcularSubtotal() {
+        return this.produto.getPreco() * this.quantidade;
     }
 }
